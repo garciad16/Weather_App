@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<link rel="shortcut icon" href="#">
+
+		<!-- Bootstrap core CSS -->
+		<link href="/css/bootstrap.min.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="clippy.css" media="all">
+		<!-- Custom styles for this template -->
+		<link href="/css/cover.css" rel="stylesheet">
+		<link href="/css/clippy.css" rel="stylesheet">
+		<link href="/css/custom.css" rel="stylesheet">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+		
+		<style>
+		body {
+		  background-image: url('https://img5.goodfon.com/wallpaper/nbig/b/e0/karta-mira-zemlia-mir-chernyi-fon-metallicheskii-blesk.jpg');
+		  background-color: rgba(255, 255, 255, 0.2);
+		  background-blend-mode: overlay;
+		}
+		
+		h1 {
+			color: white;
+		}
+</style>
+</head>
+		 
+	<title>CIS 3210 Lab</title>
+	</head>
+	<body>
+		<h1>CIS 3210 Lab: City Weather API</h1>
+		
+		<div class="site-wrapper">
+			<div class="site-wrapper-inner">
+				<div class="cover-container">
+					
+					<form method="POST" a>
+						<div class="field has-addons">
+							<div class ="control is-expanded">
+								<input class="input" name="city" type="text" placeholder="City Name"
+							</div>
+							<div class="control">
+								<button class="button is-info">
+									Add City
+								</button>
+							</div>
+						</div>
+				{% for weather in weather_data %}
+						<div class="card bg-light mb-3" style="max-width: 18rem;">
+						<div class="card-body">
+							<figure class= "image is-75x75">
+								<img src = "http://openweathermap.org/img/w/{{weather.icon}}.png" alt="Image">
+							</figure>
+							<span class="title"> {{weather.city}} </span><br>
+							<span class="subtitle"> {{weather.temperature}} F</span><br>
+							<span class="subtitle">{{weather.description}}</span><br>
+						
+							<a href="{{ url_for('delete_city', name=weather.city) }}">DELETE</a>									
+						
+						</div>
+					 </div>
+					</form>
+					
+					 
+				{% endfor %}
+						
+						<!-- <input type="text">  -->
+						<!-- <p>Suggestions: <span></span></p> -->
+						
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<script src="/js/jquery.min.js"></script>
+		<script src="/js/bootstrap.min.js"></script>
+		<script src="/js/clippy.min.js"></script>
+		<script src="/js/init.js"></script>
+		
+	</body>
+
+</html>
